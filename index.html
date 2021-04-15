@@ -152,6 +152,117 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-前端面试题整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/04/09/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/">前端面试题整理</a>
+    </h1>
+  
+
+        
+        <a href="/2021/04/09/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/" class="archive-article-date">
+  	<time datetime="2021-04-09T01:52:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-什么是BFC元素"><a href="#1-什么是BFC元素" class="headerlink" title="1. 什么是BFC元素"></a>1. 什么是BFC元素</h2><p>这篇文章讲的很好<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_36422236/article/details/88763187">什么是BFC元素</a></p>
+<h2 id="2-对于盒模型的理解"><a href="#2-对于盒模型的理解" class="headerlink" title="2. 对于盒模型的理解"></a>2. 对于盒模型的理解</h2><h3 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h3><p><em><strong>盒模型允许我们在元素周围添加边框，并定义元素之间的空间。</strong></em><br>  <strong>w3c盒模型</strong><br><img src="https://www.w3school.com.cn/i/css/boxmodel.gif" alt="w3c盒模型"></p>
+<blockquote>
+<p>从css属性来说，box-sizing: content-box  </p>
+</blockquote>
+<p>从W3C盒模型来看。盒子的width一般指的是盒子的contentWidth，增加内边距、边框和外边距不会影响content的尺寸，但是会增加元素的总尺寸。<br><strong>box-sizing: content-box</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">元素width &#x3D; contentWidth  </span><br><span class="line">元素总width &#x3D; contentWidth + padding + border + margin  </span><br><span class="line">元素总width &gt;&#x3D; 元素width  </span><br></pre></td></tr></table></figure>
+<p><strong>ie盒模型</strong><br><img src="/2021/04/09/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/ie-box.png" alt="ie盒模型"></p>
+<blockquote>
+<p>从css属性来说，box-sizing: border-box  </p>
+</blockquote>
+<p><strong>与W3C盒模型比之，IE盒模型特性完全相反</strong><br>从IE盒模型来看。盒子的width指的就是是盒子的实际宽度，增加内边距、边框和外边距会影响content的尺寸，但是不会增加元素的总尺寸。<br><strong>box-sizing: border-box</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">元素width &#x3D; contentWidth + padding + border + margin  </span><br><span class="line">元素总width &#x3D; contentWidth + padding + border + margin  </span><br><span class="line">元素总width &#x3D; 元素的width  </span><br></pre></td></tr></table></figure>
+<p>w3c盒模型与ie盒模型简单来说就是一个用内容width当作元素width，一个用边框来计算width</p>
+<h2 id="3-css3-新特性"><a href="#3-css3-新特性" class="headerlink" title="3. css3 新特性"></a>3. css3 新特性</h2><p><a href="https://liusongfneg.github.io/2021/04/08/css3/">css3新特性</a></p>
+<h2 id="4-行内元素和块级元素区别"><a href="#4-行内元素和块级元素区别" class="headerlink" title="4. 行内元素和块级元素区别"></a>4. 行内元素和块级元素区别</h2><p><strong>行内元素：</strong><br>与其他行内元素并排<br>不能设置宽高，默认的宽度就是文字的宽度<br><strong>块级元素：</strong><br>霸占一行，不能与其他任何元素并列。<br>能接受宽高，如果不设置宽度，那么宽度将默认变为父级的100%。  </p>
+<h2 id="5-flex布局特性"><a href="#5-flex布局特性" class="headerlink" title="5. flex布局特性"></a>5. flex布局特性</h2><p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">语法篇</a><br><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html">实例篇</a><br>任何一个容器都可以指定为 Flex 布局。<br>行内元素也可以使用 Flex 布局。<br>Webkit 内核的浏览器，必须加上-webkit前缀。<br>注意：设为 Flex 布局以后，子元素的float、clear和vertical-alignd等属性将失效。</p>
+<h2 id="6-rem-和em区别"><a href="#6-rem-和em区别" class="headerlink" title="6. rem 和em区别"></a>6. rem 和em区别</h2><p>rem是根据html根节点来计算的，而em是继承父元素的字体。</p>
+<h2 id="7-怎么让Chrome支持小于12px-的文字？"><a href="#7-怎么让Chrome支持小于12px-的文字？" class="headerlink" title="7. 怎么让Chrome支持小于12px 的文字？"></a>7. 怎么让Chrome支持小于12px 的文字？</h2><p>以前可以使用Chrome的CSS私有属性-webkit-text-size-adjust:none; 来取消Chrome的字体限制。但是，<strong>在chrome更新到27版本之后就删除了这个属性。</strong><br>-webkit-text-size-adjust:none;只支持英文<br>可以使用CSS3里的transform属性来应对这个问题<br><strong>scale（缩放）表示转换宽高比例大小。</strong><br>使用transform属性有个问题，它也会影响宽高，这样会对布局产生影响，如图效果。<strong>这是因为transform:scale()只能对块元素设置，设置后宽高也会比例缩放。</strong></p>
+<h2 id="8-说几种上下左右居中"><a href="#8-说几种上下左右居中" class="headerlink" title="8. 说几种上下左右居中"></a>8. 说几种上下左右居中</h2><ul>
+<li>relative，left top 50%，负margin-left margin-top  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.one</span>&#123; </span><br><span class="line">  <span class="attribute">position</span>: relative; </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>; </span><br><span class="line">  <span class="attribute">height</span>: <span class="number">500px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.two</span>&#123; </span><br><span class="line">  <span class="attribute">position</span>: absolute; </span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>; </span><br><span class="line">  <span class="attribute">top</span>:<span class="number">50%</span>; </span><br><span class="line">  <span class="attribute">margin-left</span>: -<span class="number">100px</span>; </span><br><span class="line">  <span class="attribute">margin-top</span>: -<span class="number">100px</span>; </span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#a00</span>; </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>; </span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>absolute，margin: auto  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.two</span>&#123; </span><br><span class="line">  <span class="attribute">position</span>: absolute; </span><br><span class="line">  <span class="attribute">margin</span>: auto; </span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>; </span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>; </span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>; </span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>; </span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#a00</span>; </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>; </span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>relative，left top 50%，transform: translate(-50%,-50%)  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.two</span>&#123; </span><br><span class="line">  <span class="attribute">position</span>: absolute; </span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>; </span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>; </span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>,-<span class="number">50%</span>);</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#a00</span>; </span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>; </span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>flex居中  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">   <span class="selector-class">.one</span>&#123; </span><br><span class="line"><span class="attribute">margin</span>:<span class="number">0</span> auto;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">100%</span>; </span><br><span class="line"><span class="attribute">height</span>: <span class="number">500px</span>; </span><br><span class="line"><span class="attribute">display</span>: flex;<span class="comment">/*设置外层盒子display为flex*/</span></span><br><span class="line"><span class="attribute">justify-content</span>:center;<span class="comment">/*设置内层盒子的水平居中*/</span></span><br><span class="line"><span class="attribute">align-items</span>:center;<span class="comment">/*设置内层盒子的垂直居中*/</span> </span><br><span class="line">   &#125;</span><br><span class="line">   <span class="selector-class">.two</span>&#123; </span><br><span class="line">   	<span class="attribute">display</span>: inline-block; </span><br><span class="line">   	<span class="attribute">background-color</span>: <span class="number">#a00</span>; </span><br><span class="line">   	<span class="attribute">width</span>: <span class="number">200px</span>; </span><br><span class="line">   	<span class="attribute">height</span>: <span class="number">200px</span>;  </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="9-自适应和响应式布局的理解"><a href="#9-自适应和响应式布局的理解" class="headerlink" title="9. 自适应和响应式布局的理解"></a>9. 自适应和响应式布局的理解</h2></li>
+<li>响应式布局就是不同分辨率视窗，就展示不同的布局。<ul>
+<li>优点是灵活性强</li>
+<li>缺点是废设计</li>
+<li>场景 - 网站逻辑不复杂，细节不太在意</li>
+</ul>
+</li>
+<li>自适应就是网页内容的宽度自动去适应视窗宽度 <ul>
+<li>优点是省事，在手机移动端不同的手机上展示效果良好</li>
+<li>缺点是不灵活，在pc，手机，或者其他平台必须要写多套代码</li>
+<li>场景 - 网站逻辑复杂，重视用户体验<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yanayana/p/7066948.html">静态布局、自适应布局、流式布局、响应式布局、弹性布局等的概念和区别</a></li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端面试题整理</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/04/09/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E6%95%B4%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-css3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -460,6 +571,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">前端面试题整理</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
