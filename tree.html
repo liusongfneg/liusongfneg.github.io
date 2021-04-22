@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <title>Document</title>
+    <title>WorkerJS</title>
 </head>
 
 <body>
@@ -67,13 +67,13 @@
             methods: {
                 getJsonTree() {
                     let that = this
-                    var url = "tree.json"/*json文件url*/
-                    var request = new XMLHttpRequest();
+                    let url = "tree.json"/*json文件url*/
+                    let request = new XMLHttpRequest();
                     request.open("get", url);/*设置请求方法与路径*/
                     request.send(null);/*不发送数据到服务器*/
                     request.onload = function () {/*XHR对象获取到返回信息后执行*/
                         if (request.status == 200) {/*返回状态为200，即为数据获取成功*/
-                            var json = JSON.parse(request.responseText);
+                            let json = JSON.parse(request.responseText);
                             that.data = json
                             that.parallelData = treeTransArray(json)
                         }
@@ -81,21 +81,18 @@
 
                 },
                 query() {
-                    let that = this
-                    var url = "Worker.js"/*json文件url*/
-                    var request = new XMLHttpRequest();
-                    request.open("get", url);/*设置请求方法与路径*/
-                    request.send(null);/*不发送数据到服务器*/
-                    request.onload = function () {/*XHR对象获取到返回信息后执行*/
-                        if (request.status == 200) {/*返回状态为200，即为数据获取成功*/
-                            console.log('request: ', request)
-                            // var js = JSON.parse(request.responseText);
-                            // var worker = new Worker(js);
-                        }
+                    let worker = new Worker('./js/worker.js');
+                    worker.postMessage('Hello World');
+                    worker.postMessage({method: 'echo', args: this.parallelData});
+                    worker.onmessage = function (event) {
+                      console.log('Received message ' + event.data);
+                      doSomething();
                     }
-                    
-
-                    // this.filterText
+                    function doSomething() {
+                      // 执行任务
+                      worker.postMessage('Work done!');
+                    }
+                    worker.terminate();
                 }
                 // filterNode(value, data) {
                 //     if (!value) return true;
