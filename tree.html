@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <el-input placeholder="输入关键字进行过滤" v-model="filterText">
+        </el-input>
+        <el-button @click="query">搜索</el-button>
+        <el-tree class="filter-tree" :data="data" :accordion="true" :props="defaultProps" ref="tree"
+            :highlight-currents="true" :expand-on-click-node="false" node-key="pzId">
+        </el-tree>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+        function treeTransArray(tree, key) {//通过树结构返回普通json数组
+            return tree.reduce(function itemTree(con, item) {
+                con.push(item);
+                if (item[key] && item[key].length > 0)
+                    item[key].reduce(itemTree, con);
+                return con;
+            }, []).map(function (item) {
+                item[key] = [];
+                return item;
+            })
+        }
+        new Vue({
+            el: "#app",
+            data: function () {
+                return {
+                    msg: "hello vue.js",
+                    visible: false,
+                    filterText: '',
+                    parallelData:'',
+                    data: [],
+                    flag: true,
+                    defaultProps: {
+                        children: 'children',
+                        label: 'name',
+                        isLeaf: 'leaf'
+                    }
+                }
+            },
+            watch: {
+                // filterText(val) {
+                //     if (this.flag) {
+                //         this.flag = false
+                //         setTimeout(() => {
+                //             this.flag = true
+                //             console.log('val: ', val);
+                //         }, 1000)
+                //         this.$refs.tree.filter(val);
+                //     }
+                // }
+            },
+            created() {
+                this.getJsonTree()
+            },
+            methods: {
+                getJsonTree() {
+                    let that = this
+                    var url = "tree.json"/*json文件url*/
+                    var request = new XMLHttpRequest();
+                    request.open("get", url);/*设置请求方法与路径*/
+                    request.send(null);/*不发送数据到服务器*/
+                    request.onload = function () {/*XHR对象获取到返回信息后执行*/
+                        if (request.status == 200) {/*返回状态为200，即为数据获取成功*/
+                            var json = JSON.parse(request.responseText);
+                            that.data = json
+                            that.parallelData = treeTransArray(json)
+                        }
+                    }
+
+                },
+                query() {
+                    let that = this
+                    var url = "Worker.js"/*json文件url*/
+                    var request = new XMLHttpRequest();
+                    request.open("get", url);/*设置请求方法与路径*/
+                    request.send(null);/*不发送数据到服务器*/
+                    request.onload = function () {/*XHR对象获取到返回信息后执行*/
+                        if (request.status == 200) {/*返回状态为200，即为数据获取成功*/
+                            console.log('request: ', request)
+                            // var js = JSON.parse(request.responseText);
+                            // var worker = new Worker(js);
+                        }
+                    }
+                    
+
+                    // this.filterText
+                }
+                // filterNode(value, data) {
+                //     if (!value) return true;
+                //     return data.name.indexOf(value) !== -1;
+                // },
+            },
+        });
+    </script>
+</body>
+
+</html>
