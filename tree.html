@@ -83,6 +83,7 @@
                 },
                 query() {
                     let worker = new Worker('./js/worker.js');
+                    console.log('worker: ', worker)
                     worker.postMessage('Hello World');
                     worker.postMessage({method: 'echo', args: this.parallelData});
                     worker.onmessage = function (event) {
