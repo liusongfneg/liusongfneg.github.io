@@ -85,7 +85,7 @@
                     let worker = new Worker('js/worker.js');
                     worker.postMessage({method: 'echo', args: this.parallelData});
                     worker.onmessage = function (event) {
-                        console.log('Received message ' + event.data);
+                        console.log('Received message ' , event.data);
                         clear()
                         //   doSomething();
                     }
@@ -94,9 +94,7 @@
                         worker.postMessage('Work done!');
                     }
                     function clear() {
-                        setTimeout(() => {
                             worker.terminate();
-                        })
                     }
                 }
                 // filterNode(value, data) {
