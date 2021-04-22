@@ -1,4 +1,3 @@
-addEventListener('message', function (e) {
-    postMessage('You said: ' + e.data);
-}, false);
+self.postMessage('You said: ' + e.data);
+
 console.log(11111111111)

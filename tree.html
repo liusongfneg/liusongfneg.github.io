@@ -39,7 +39,7 @@
                     msg: "hello vue.js",
                     visible: false,
                     filterText: '',
-                    parallelData:'',
+                    parallelData: '',
                     data: [],
                     flag: true,
                     defaultProps: {
@@ -82,19 +82,23 @@
 
                 },
                 query() {
-                    let worker = new Worker('./js/worker.js');
-                    console.log('worker: ', worker)
+                    let worker = new Worker('js/worker.js');
                     worker.postMessage('Hello World');
-                    worker.postMessage({method: 'echo', args: this.parallelData});
+                    // worker.postMessage({method: 'echo', args: this.parallelData});
                     worker.onmessage = function (event) {
-                      console.log('Received message ' + event.data);
-                      doSomething();
+                        console.log('Received message ' + event.data);
+                        this.clear()
+                        //   doSomething();
                     }
                     function doSomething() {
-                      // 执行任务
-                      worker.postMessage('Work done!');
+                        // 执行任务
+                        worker.postMessage('Work done!');
                     }
-                    worker.terminate();
+                    function clear() {
+                        setTimeout(() => {
+                            worker.terminate();
+                        })
+                    }
                 }
                 // filterNode(value, data) {
                 //     if (!value) return true;
