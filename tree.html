@@ -87,7 +87,7 @@
                     // worker.postMessage({method: 'echo', args: this.parallelData});
                     worker.onmessage = function (event) {
                         console.log('Received message ' + event.data);
-                        this.clear()
+                        clear()
                         //   doSomething();
                     }
                     function doSomething() {
