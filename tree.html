@@ -83,8 +83,7 @@
                 },
                 query() {
                     let worker = new Worker('js/worker.js');
-                    worker.postMessage('Hello World');
-                    // worker.postMessage({method: 'echo', args: this.parallelData});
+                    worker.postMessage({method: 'echo', args: this.parallelData});
                     worker.onmessage = function (event) {
                         console.log('Received message ' + event.data);
                         clear()
